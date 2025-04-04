@@ -1,0 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Box-sizing ensures that padding and border are included in the element's total size */
+}
+
+body {
+  background-color: rgb(247, 247, 247);
+}

@@ -1,0 +1,43 @@
+.projects {
+  margin: 20px 0;
+}
+
+.projects h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.cards-container {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+}
+
+.card {
+  background: linear-gradient(to bottom, #fcfcfc, #b8b8b8);
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  overflow: hidden;
+  text-align: center;
+  border: 2px solid #000;
+}
+
+.card-image {
+  height: 100px;
+  background: #ddd;
+}
+
+.card-content {
+  padding: 10px;
+}
+
+.card-content h3 {
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+.card-content p {
+  color: #666;
+  font-size: 0.9rem;
+}
