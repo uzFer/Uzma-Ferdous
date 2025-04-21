@@ -20,6 +20,7 @@ const Projects = () => {
       description:
         "Working in a team of 4 to develop a Text-to-ASL API that converts written messages into American Sign Language (ASL) symbols and animations, aiming to bridge the communication gap between ASL users and non-signers.",
       image: "./text-to-asl.png",
+      altText: "Text to ASL Model Image",
     },
     {
       title: "Uzma's Art Shop",
@@ -29,6 +30,7 @@ const Projects = () => {
       image: "./art-shop.png",
       githubLink: "https://github.com/uzFer/Uzmas-Art-Shop",
       websiteLink: "https://uzmas-art-shop.vercel.app/",
+      altText: "Uzma's Art Shop Image",
     },
     {
       title: "TCP Chat Room Application",
@@ -36,6 +38,7 @@ const Projects = () => {
       description:
         "Created a multi-threaded chat room application in C using UNIX TCP sockets to enable users to create, join, and leave chat rooms using doubly linked lists, multithreading, and synchronous I/O. Other features include private messaging and admin controls to switch roles and kick users out of sessions.",
       image: "./tcp.jpg",
+      altText: "TCP Image",
     },
     {
       title: "DE1-SoC Battleship",
@@ -44,6 +47,7 @@ const Projects = () => {
         "Developed an interactive Battleship game in C for the DE1-SOC board, taking user input from multiple I/O Devices including DE1-SOC board pushbutton keys and switches, and an external PS/2 Keyboard. Also, it uses the A9 Private Timer to measure and display player turn countdowns and control gameplay animations.",
       image: "./battleship.png",
       githubLink: "https://github.com/uzFer/ECE243-Battleship",
+      altText: "ECE243 Battleship Image",
     },
     {
       title: "Scavenger Hunt GIS",
@@ -51,6 +55,7 @@ const Projects = () => {
       description:
         "In a team of 3, we created a Geographic Information System (GIS) in C++ to extract information from the OpenStreetMap API and store street intersections, points of interest, natural features, and transit data from over 8 billion graph nodes. We optimized autocomplete searching and zoom rendering using Tries and integrated it with other STL data structures. We ended up placing 4th out of 90 teams on course leaderboard for our 'Travelling Courier Problem' algorithm involving Multi-target Dijkstra, simulated annealing, and two-opt operations.",
       image: "./mapper.png",
+      altText: "ECE297 GIS Image",
     },
     {
       title: "YOLOv8 Object Segmentation",
@@ -59,6 +64,7 @@ const Projects = () => {
         "This project involved training and evaluating a YOLOv8 deep learning model for object segmentation of common road obstacles with a final F1 score of 61.5% and mAP 50 of 58.4%, outperforming the baseline Canny Edge Detector by 10% (which I was responsible for developing). We processed Berkeley Deep Drive 10K dataset to create training, validation, and testing datasets by converting instance segmentation labels into YOLOv8 format and applying augmentation techniques to improve data diversity.",
       image: "./yolo.png",
       githubLink: "https://github.com/uzFer/APS360-Project",
+      altText: "YOLOv8 Model Image",
     },
     {
       title: "Tidey",
@@ -68,6 +74,7 @@ const Projects = () => {
       image: "./tidey.png",
       githubLink: "https://github.com/uzFer/tidey",
       websiteLink: "https://uzfer.github.io/tidey/",
+      altText: "Tidey Image",
     },
   ];
 
@@ -121,7 +128,7 @@ const Projects = () => {
               <div className="project-card">
                 <img
                   src={card.image}
-                  alt="Uzma Ferdous"
+                  alt={card.altText}
                   className="project-card-image"
                 />
                 <div className="project-card-content">
@@ -142,28 +149,34 @@ const Projects = () => {
       </div>
 
       {selectedProject && (
-        <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
-          <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="projects-modal-overlay"
+          onClick={() => setSelectedProject(null)}
+        >
+          <div
+            className="projects-modal-container"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
-              className="modal-close-button"
+              className="projects-modal-close-button"
               onClick={() => setSelectedProject(null)}
             >
               <FaTimes />
             </button>
-            <div className="modal-content">
-              <div className="modal-header">
+            <div className="projects-modal-content">
+              <div className="projects-modal-header">
                 <h2>{selectedProject.title}</h2>
                 <p>{selectedProject.date}</p>
               </div>
-              <div className="modal-body">
+              <div className="projects-modal-body">
                 <img
                   src={selectedProject.image}
                   alt="Uzma Ferdous"
-                  className="modal-image"
+                  className="projects-modal-image"
                 />
-                <div className="modal-text">
+                <div className="projects-modal-text">
                   <p>{selectedProject.description}</p>
-                  <div className="modal-buttons">
+                  <div className="projects-modal-buttons">
                     {selectedProject.githubLink && (
                       <a
                         className="project-tag1"

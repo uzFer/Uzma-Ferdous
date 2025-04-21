@@ -105,7 +105,7 @@
   cursor: not-allowed;
 }
 
-.modal-overlay {
+.projects-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -118,7 +118,7 @@
   z-index: 1000;
 }
 
-.modal-container {
+.projects-modal-container {
   position: relative;
   background: #e0f7fa;
   border: 2px solid black;
@@ -132,35 +132,35 @@
   box-sizing: border-box;
 }
 
-.modal-content {
+.projects-modal-content {
   width: 100%;
   text-align: center;
 }
 
-.modal-header {
+.projects-modal-header {
   margin-bottom: 40px;
 }
 
-.modal-body {
+.projects-modal-body {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.modal-image {
+.projects-modal-image {
   width: 45%;
   height: 300px;
   background-color: #4f4f4f;
 }
 
-.modal-text {
+.projects-modal-text {
   width: 50%;
   text-align: left;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
-.modal-text p,
+.projects-modal-text p,
 a {
   line-height: 1.5;
   color: #333;
@@ -193,11 +193,11 @@ a {
 
 .project-tag1:hover,
 .project-tag2:hover {
-  transform: scale(1.05);
+  transform: translateY(-5px);
   cursor: pointer;
 }
 
-.modal-buttons {
+.projects-modal-buttons {
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -205,7 +205,7 @@ a {
   margin: 20px auto;
 }
 
-.modal-close-button {
+.projects-modal-close-button {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -218,6 +218,6 @@ a {
   transition: transform 0.3s ease;
 }
 
-.modal-close-button:hover {
+.projects-modal-close-button:hover {
   color: #666;
 }

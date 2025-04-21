@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
+import { FaVolumeUp, FaVolumeMute, FaDownload } from "react-icons/fa";
 
 import "./Hero.css";
 const facts = [
@@ -123,6 +123,13 @@ const Hero = () => {
               </span>
             )}
           </div>
+          <a
+            href="/Uzma Ferdous - Resume.pdf"
+            download
+            className="download-resume-button"
+          >
+            <FaDownload /> Download Resume
+          </a>
         </div>
         <div className="hero-right">
           <div className="avatar-wrapper">

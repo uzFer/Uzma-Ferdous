@@ -14,6 +14,7 @@ const WorkExperience = () => {
         "Developing a scalable API for documents functionality, replacing 9 integration points using C# and .NET.",
       ],
       image: "xero.svg",
+      altText: "Xero Logo",
     },
     {
       title: "Infrastructure & Cloud Operations Intern",
@@ -24,6 +25,7 @@ const WorkExperience = () => {
         "Streamlined CMDB with tools such as Device42, vSphere, and SolarWinds to improve asset tracking.",
       ],
       image: "questrade.png",
+      altText: "Questrade Logo",
     },
     {
       title: "Information Technology Intern",
@@ -34,6 +36,7 @@ const WorkExperience = () => {
         "Successfully prepared 800+ laptops for deployment to office employees",
       ],
       image: "cast.jpg",
+      altText: "CAST Logo",
     },
     {
       title: "Information Technology Field Staff",
@@ -44,25 +47,33 @@ const WorkExperience = () => {
         "Recorded software issues and/or electronic damages for all chrome books using Google Suite tools.",
       ],
       image: "tdsb.png",
+      altText: "TDSB Logo",
     },
   ];
 
   return (
     <div className="work-experience">
       <h2 className="work-experience-title">Work Experience</h2>
+
       <div className="timeline">
         {jobs.map((job, index) => (
           <div key={index} className="timeline-item">
             <div className="timeline-dot"></div>
+
             <div className="timeline-content">
               <div className="timeline-content-top">
                 <div className="timeline-content-left">
-                  <img src={job.image} className="timeline-image" />
+                  <img
+                    src={job.image}
+                    alt={job.altText}
+                    className="timeline-image"
+                  />
                   <h3 className="job-title">{job.title}</h3>
                   <p className="company">{job.company}</p>
                 </div>
                 <p className="duration">{job.duration}</p>
               </div>
+
               <ul className="description">
                 {job.description.map((point, i) => (
                   <li key={i}>{point}</li>

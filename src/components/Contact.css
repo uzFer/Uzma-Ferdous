@@ -32,42 +32,38 @@
   transition: color 0.3s;
 }
 
-.contact-link:hover {
-  color: #ffffff;
-}
-
 .contact-icon {
   font-size: 1.2rem;
 }
 
 .contact-tag1 {
   background: #ffc107;
-  border: 2px solid #000;
-  border-radius: 12px;
-  padding: 5px 12px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  box-shadow: 2px 2px 0 #000;
 }
 
 .contact-tag2 {
   background: #c28dff;
-  border: 2px solid #000;
-  border-radius: 12px;
-  padding: 5px 12px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  box-shadow: 2px 2px 0 #000;
 }
 
 .contact-tag3 {
   background: #ff7676;
+}
+
+.contact-tag1,
+.contact-tag2,
+.contact-tag3 {
   border: 2px solid #000;
   border-radius: 12px;
   padding: 5px 12px;
   font-size: 0.9rem;
   font-weight: bold;
   box-shadow: 2px 2px 0 #000;
+  transition: all 0.3s ease;
+}
+
+.contact-tag1:hover,
+.contact-tag2:hover,
+.contact-tag3:hover {
+  transform: translateY(-5px);
 }
 
 .contact-email-section {
@@ -96,6 +92,21 @@
   padding: 20px;
   border-radius: 4px;
   width: 100%;
+}
+
+.submit-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
 }
 
 .form-group {

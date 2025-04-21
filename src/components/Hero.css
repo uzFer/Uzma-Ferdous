@@ -158,8 +158,31 @@
   color: #0077ff;
   text-decoration: underline;
 }
+
 .fact-link:hover {
   color: #0055cc;
+}
+
+.download-resume-button {
+  display: flex;
+  margin-top: 20px;
+  padding: 20px;
+  background: #7ad7ff;
+  border: 2px solid #000;
+  border-radius: 12px;
+  padding: 5px 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  box-shadow: 2px 2px 0 #000;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  width: 12vw;
+  transition: all 0.3s ease;
+}
+
+.download-resume-button:hover {
+  transform: translateY(-5px);
 }
 
 .avatar-wrapper {

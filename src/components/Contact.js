@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
 import "./Contact.css";
 
@@ -9,6 +10,30 @@ const Contact = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const serviceID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const templateID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
+    const templateParams = {
+      name: name,
+      email: email,
+      time: new Date().toLocaleString(),
+      message: message,
+    };
+
+    try {
+      await emailjs.send(serviceID, templateID, templateParams, publicKey);
+      alert("Message sent successfully!");
+      setName("");
+      setEmail("");
+      setMessage("");
+    } catch (error) {
+      console.error("Failed to send message:", error);
+      alert(
+        `Failed to send the message. Error: ${error.text || error.message}`
+      );
+    }
   };
 
   return (
@@ -77,6 +102,9 @@ const Contact = () => {
               required
             ></textarea>
           </div>
+          <button type="submit" className="submit-button">
+            Send Message
+          </button>
         </form>
       </div>
     </div>

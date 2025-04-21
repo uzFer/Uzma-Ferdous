@@ -15,6 +15,7 @@ const VolunteerExperience = () => {
       description:
         "YNCN works with over 6000 students and 100+ companies to offer professional development programs and career opportunities. My current role on YNCN involves managing a team of four wonderful graphics associates and developing our marketing vision for the upcoming year.",
       image: "yncn.png",
+      altText: "YNCN Logo",
     },
     {
       role: "Student Ambassador",
@@ -23,6 +24,7 @@ const VolunteerExperience = () => {
       description:
         "As an ECE student ambassador, I participate in open house and reception events where I speak to incoming university students and give advice based on my experience in the program. I also frequently communicate with faculty members to offer my insights on key departmental decisions affecting students.",
       image: "ece.png",
+      altText: "ECE Logo",
     },
     {
       role: "Brand Growth & Marketing Associate",
@@ -31,6 +33,7 @@ const VolunteerExperience = () => {
       description:
         "YNCN works with over 6000 students and 100+ companies to offer professional development programs and career opportunities. My previous role at YNCN involved working on creative graphics for our marketing material and volunteering at pop-up booths",
       image: "yncn.png",
+      altText: "YNCN Logo",
     },
     {
       role: "Computer Vision Developer",
@@ -39,6 +42,7 @@ const VolunteerExperience = () => {
       description:
         "Implemented deep learning object detection algorithms for autonomous rover using Python, PyTorch, and OpenCV. Improved data labelling efficiency for lane line detection using Roboflow's annotate feature on a 1K dataset.",
       image: "utra.png",
+      altText: "UTRA Logo",
     },
     {
       role: "Professional Development Marketing Director",
@@ -47,6 +51,7 @@ const VolunteerExperience = () => {
       description:
         "WISE @ UofT is a community of 50+ members with the hope of cultivating a safe and beneficial environment for women in all areas of STEM to meet one another and build valuable skills. My role as PD Marketing Director involved creating posters, announcements, and various marketing material to promote our career development events.",
       image: "wise.jpeg",
+      altText: "WISE Logo",
     },
     {
       role: "Software Developer",
@@ -55,6 +60,7 @@ const VolunteerExperience = () => {
       description:
         "I helped work on the UofT Engineering Orientation (Frosh) website for 1000+ incoming students! I also refined the infamous course database website (www.courses.skule.ca) using React.js and Redux.",
       image: "engsoc.png",
+      altText: "EngSoc Logo",
     },
     {
       role: "Programming Director",
@@ -63,6 +69,7 @@ const VolunteerExperience = () => {
       description:
         "UTEK is UofT's largest engineering competition with categories like competitive programming, design, and consulting. I developed the programming case study for the 2023 year with 40+ participants!",
       image: "utek.png",
+      altText: "UTEK Logo",
     },
     {
       role: "Content Lead",
@@ -71,6 +78,7 @@ const VolunteerExperience = () => {
       description:
         "As the Content Lead for UofT CSSA, I led educational workshops about cybersecurity and best practices.",
       image: "cssa.png",
+      altText: "CSSA Logo",
     },
     {
       role: "Handbook Executive",
@@ -79,6 +87,7 @@ const VolunteerExperience = () => {
       description:
         "After my first year of engineering, I decided to give back with some humour by offering my (lack of) writing skills to the 2022 Frosh Handbook.",
       image: "frosh.png",
+      altText: "Frosh 2022 Logo",
     },
   ];
 
@@ -110,6 +119,7 @@ const VolunteerExperience = () => {
         >
           <FaCaretSquareLeft />
         </button>
+
         <div
           className="volunteer-cards-container"
           style={{ transform: `translateX(-${currentIndex * 10}%)` }}
@@ -131,7 +141,11 @@ const VolunteerExperience = () => {
               }}
             >
               <div className="volunteer-card">
-                <img src={card.image} className="volunteer-card-image" />
+                <img
+                  src={card.image}
+                  alt={card.altText}
+                  className="volunteer-card-image"
+                />
                 <div className="volunteer-card-content">
                   <h3>{card.role}</h3>
                   <p>{card.date}</p>
@@ -140,6 +154,7 @@ const VolunteerExperience = () => {
             </div>
           ))}
         </div>
+
         <button
           className="volunteer-carousel-next"
           onClick={goToNextSlide}
@@ -151,25 +166,32 @@ const VolunteerExperience = () => {
 
       {selectedExperience && (
         <div
-          className="modal-overlay"
+          className="volunteer-modal-overlay"
           onClick={() => setSelectedExperience(null)}
         >
-          <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="volunteer-modal-container"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
-              className="modal-close-button"
+              className="volunteer-modal-close-button"
               onClick={() => setSelectedExperience(null)}
             >
               <FaTimes />
             </button>
-            <div className="modal-content">
-              <div className="modal-header">
+            <div className="volunteer-modal-content">
+              <div className="volunteer-modal-header">
                 <h2>{selectedExperience.role}</h2>
                 <h3>{selectedExperience.club}</h3>
                 <p>{selectedExperience.date}</p>
               </div>
-              <div className="modal-body">
-                <img src={selectedExperience.image} className="modal-image" />
-                <div className="modal-text">
+              <div className="volunteer-modal-body">
+                <img
+                  src={selectedExperience.image}
+                  alt="Alt"
+                  className="volunteer-modal-image"
+                />
+                <div className="volunteer-modal-text">
                   <p>{selectedExperience.description}</p>
                 </div>
               </div>
@@ -177,6 +199,7 @@ const VolunteerExperience = () => {
           </div>
         </div>
       )}
+
       <audio ref={clickSound} src="/click.mp3" preload="auto" />
     </section>
   );
