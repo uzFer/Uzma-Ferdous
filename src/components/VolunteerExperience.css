@@ -1,39 +1,39 @@
-.projects {
+.volunteer-experience {
   margin: 20px 0;
   padding: 50px;
 }
 
-.projects h2 {
+.volunteer-experience h2 {
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
-.project-carousel {
+.volunteer-experience-carousel {
   display: flex;
   align-items: center;
   position: relative;
   overflow: hidden;
 }
 
-.project-card-wrapper {
+.volunteer-card-wrapper {
   transition: filter 0.5s ease, transform 0.5s ease;
 }
 
-.project-card-blurred {
+.volunteer-blurred {
   opacity: 10;
   filter: blur(5px);
   transform: scale(0.8);
   pointer-events: none;
 }
 
-.project-cards-container {
+.volunteer-cards-container {
   display: flex;
   transition: transform 0.5s ease;
   padding: 0 50px;
 }
 
-.project-card {
+.volunteer-card {
   background: #e0f7fa;
   border: 2px solid black;
   box-shadow: 3px 3px 0 #000;
@@ -44,34 +44,38 @@
   padding: 20px;
   overflow: hidden;
   text-align: center;
+  align-content: center;
   transition: transform 0.3s ease;
 }
 
-.project-card:hover {
+.volunteer-card:hover {
   cursor: pointer;
   transform: scale(1.02);
 }
 
-.project-card-image {
-  height: 10rem;
+.volunteer-card-image {
+  height: 8rem;
+  width: 8rem;
+  border-radius: 50%;
+  margin: 0 auto;
   background: #ddd;
 }
 
-.project-card-content {
+.volunteer-card-content {
   padding: 10px;
 }
 
-.project-card-content h3 {
+.volunteer-card-content h3 {
   margin: 10px 0;
   font-size: 1rem;
 }
 
-.project-card-content p {
+.volunteer-card-content p {
   color: #666;
   font-size: 0.9rem;
 }
 
-.project-carousel button {
+.volunteer-experience-carousel button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -81,22 +85,22 @@
   color: black;
   cursor: pointer;
   z-index: 10;
-  transition: transform 0.5s ease;
 }
 
-.project-carousel-prev {
+.volunteer-carousel-prev {
   left: 10px;
 }
 
-.project-carousel-next {
+.volunteer-carousel-next {
   right: 10px;
 }
 
-.project-carousel button:hover {
+.volunteer-experience-carousel button:hover {
   color: #ffffff;
+  transition: transform 0.5s ease;
 }
 
-.project-carousel button:disabled {
+.volunteer-experience-carousel button:disabled {
   color: #ffffff;
   cursor: not-allowed;
 }
@@ -164,16 +168,28 @@ a {
   text-decoration: none;
 }
 
-.project-tag1 {
+.tag1 {
   background: #ffc107;
+  border: 2px solid #000;
+  border-radius: 12px;
+  padding: 5px 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  box-shadow: 2px 2px 0 #000;
+  width: 8vw;
+  text-align: center;
 }
 
-.project-tag2 {
+.tag2 {
   background: #c28dff;
 }
 
-.project-tag1,
-.project-tag2 {
+.tag3 {
+  background: #ff7676;
+}
+
+.tag1,
+.tag2 {
   border: 2px solid #000;
   border-radius: 12px;
   padding: 5px 12px;
@@ -188,8 +204,8 @@ a {
   justify-content: space-evenly;
 }
 
-.project-tag1:hover,
-.project-tag2:hover {
+.tag1:hover,
+.tag2:hover {
   transform: scale(1.05);
   cursor: pointer;
 }

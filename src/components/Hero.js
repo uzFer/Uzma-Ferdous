@@ -46,19 +46,50 @@ const Hero = () => {
 
   return (
     <section className="hero">
-      <div className="hero-left">
-        <h2 className="hero-title">Trainer Information</h2>
-        <div className="hero-box" onClick={handleBoxClick}>
-          {facts[factIndex]}
+      <div className="hero-title-row">
+        <img src="/name.png" alt="Uzma Ferdous" className="hero-title-image" />
+      </div>
+      <div className="hero-content-row">
+        <div className="hero-left">
+          <h2 className="hero-title">
+            Trainer Information <span className="gender-symbol">♀</span>
+          </h2>
+
+          <p className="trainer-level">Lv. 22</p>
+
+          <div className="hero-tags">
+            <span className="tag1">Software Engineer</span>
+            <span className="tag2">Computer Architecture</span>
+            <span className="tag3">Backend Software</span>
+          </div>
+
+          <div className="trainer-info">
+            <p>
+              <strong>Languages/Frameworks:</strong> C/C++, C#, TypeScript,
+              React, Redux, Python
+            </p>
+            <p>
+              <strong>Abilities:</strong> Backend/full-stack development, APIs,
+              & low-level software. Strong interest in computer
+              architecture/hardware and machine learning
+            </p>
+            <p>
+              <strong>Nature:</strong> Curious & Resilient
+            </p>
+          </div>
+
+          <div className="hero-box" onClick={handleBoxClick}>
+            {facts[factIndex]}
+          </div>
+        </div>
+        <div className="hero-right">
+          <div className="avatar-wrapper">
+            <img src="/avatar.png" alt="Trainer" className="hero-image" />
+            <div className="avatar-shadow"></div>
+          </div>
         </div>
       </div>
-      <div className="hero-right">
-        <img
-          src="https://via.placeholder.com/300"
-          alt="Trainer"
-          className="hero-image"
-        />
-      </div>
+
       <div className="audio-icon" onClick={toggleMusic}>
         {isMusicPlaying ? <FaVolumeUp /> : <FaVolumeMute />}
       </div>

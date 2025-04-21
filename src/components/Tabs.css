@@ -1,0 +1,63 @@
+.pokeball-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin: 3rem 0;
+}
+
+.pokeball-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.projects-label-image {
+  width: 16rem;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.experience-label-image {
+  width: 18rem;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.contact-me-label-image {
+  width: 20rem;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.pokeball-image {
+  width: 10rem;
+  height: 10rem;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.pokeball-hover-image {
+  width: 10rem;
+  height: 10rem;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.pokeball-open-image {
+  width: 10rem;
+  height: 14rem;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.pokeball-image,
+.pokeball-hover-image,
+.pokeball-open-image {
+  opacity: 1;
+  transform: scale(1);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.pokeball-item:hover .pokeball-image,
+.pokeball-item:hover .pokeball-hover-image {
+  transform: scale(1.05);
+}

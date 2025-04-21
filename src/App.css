@@ -4,6 +4,10 @@ body {
   margin: 0;
   font-family: "Roboto Mono", monospace;
   background: linear-gradient(to bottom, #6dd5ed, #a0ffa1);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   color: #000000;
 }
 
