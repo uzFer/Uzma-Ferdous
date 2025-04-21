@@ -76,6 +76,7 @@
   font-size: 0.9rem;
   font-weight: bold;
   box-shadow: 2px 2px 0 #000;
+  text-align: center;
   width: 12vw;
 }
 
@@ -87,7 +88,8 @@
   font-size: 0.9rem;
   font-weight: bold;
   box-shadow: 2px 2px 0 #000;
-  width: 15vw;
+  text-align: center;
+  width: 14vw;
 }
 
 .tag3 {
@@ -150,6 +152,14 @@
 
 .hero-box:hover {
   transform: translateY(-5px);
+}
+
+.fact-link {
+  color: #0077ff;
+  text-decoration: underline;
+}
+.fact-link:hover {
+  color: #0055cc;
 }
 
 .avatar-wrapper {

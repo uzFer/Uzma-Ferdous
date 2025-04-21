@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./Tabs.css";
 
 const tabs = [
@@ -24,12 +24,18 @@ const tabs = [
 
 const PokeballTabs = ({ activeTab, setActiveTab }) => {
   const [hoverTab, setHoverTab] = useState(null);
+  const pokeballSound = useRef(null);
 
   const handleClick = (index) => {
     if (activeTab === index) {
       setActiveTab(null);
     } else {
       setActiveTab(index);
+    }
+
+    if (pokeballSound.current) {
+      pokeballSound.current.currentTime = 0;
+      pokeballSound.current.play();
     }
   };
 
@@ -72,6 +78,7 @@ const PokeballTabs = ({ activeTab, setActiveTab }) => {
           </div>
         );
       })}
+      <audio ref={pokeballSound} src="/pokeball.mp3" preload="auto" />
     </div>
   );
 };

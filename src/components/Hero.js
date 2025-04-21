@@ -2,13 +2,41 @@ import React, { useState, useRef } from "react";
 import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 
 import "./Hero.css";
-
 const facts = [
-  "I love to paint and explore different forms of art (recently made some mini clay statues)",
-  "I enjoy going to the gym to weightlift! In general, I love to stay active",
-  "I like to watch sports and am a Raptors fan (unfortunately as of late). I'm also trying to get into Premier League and football",
-  "I like coding (obviously) and incorporating creativity in my work",
-  "I absolutely love music (check out my Spotify to see the immaculate music taste). Any song recommendations?",
+  {
+    type: "text",
+    content:
+      "I love to be creative! My favourite hobby is painting and I enjoy exploring different forms of art (recently experimented with air-dry clay).",
+  },
+  {
+    type: "textWithLink",
+    preText: "Check out my",
+    linkText: "Instagram page",
+    linkHref: "https://www.instagram.com/yourusername/",
+    postText: "where I post my paintings and commissions ;)",
+  },
+  {
+    type: "text",
+    content:
+      "I enjoy going to the gym and staying active! I'm more of a weightlifting-person but I've been trying out pilates and yoga recently!",
+  },
+  {
+    type: "text",
+    content:
+      "I like to watch sports and am a big Raptors fan (unfortunately as of late). Besides the NBA, I'm a super beginner Premier League fan",
+  },
+  {
+    type: "text",
+    content:
+      "I like coding (obviously) and incorporating creativity in my work.",
+  },
+  {
+    type: "textWithLink",
+    preText: "I absolutely love music and all types of genres. Any",
+    linkText: "song recommendations?",
+    linkHref: "https://open.spotify.com/user/ujmaaaa",
+    postText: "",
+  },
 ];
 
 const Hero = () => {
@@ -79,7 +107,21 @@ const Hero = () => {
           </div>
 
           <div className="hero-box" onClick={handleBoxClick}>
-            {facts[factIndex]}
+            {facts[factIndex].type === "text" && facts[factIndex].content}
+            {facts[factIndex].type === "textWithLink" && (
+              <span>
+                {facts[factIndex].preText}&nbsp;
+                <a
+                  href={facts[factIndex].linkHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="fact-link"
+                >
+                  {facts[factIndex].linkText}
+                </a>
+                &nbsp;{facts[factIndex].postText}
+              </span>
+            )}
           </div>
         </div>
         <div className="hero-right">

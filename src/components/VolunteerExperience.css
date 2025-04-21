@@ -58,7 +58,7 @@
   width: 8rem;
   border-radius: 50%;
   margin: 0 auto;
-  background: #ddd;
+  background: #ffffff;
 }
 
 .volunteer-card-content {
@@ -149,9 +149,10 @@
 
 .modal-image {
   width: 45%;
-  height: 300px;
-  background-color: #4f4f4f;
-  border-radius: 8px;
+  height: 20rem;
+  width: 20rem;
+  background-color: #ffffff;
+  border-radius: 50%;
 }
 
 .modal-text {
@@ -166,48 +167,6 @@ a {
   line-height: 1.5;
   color: #333;
   text-decoration: none;
-}
-
-.tag1 {
-  background: #ffc107;
-  border: 2px solid #000;
-  border-radius: 12px;
-  padding: 5px 12px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  box-shadow: 2px 2px 0 #000;
-  width: 8vw;
-  text-align: center;
-}
-
-.tag2 {
-  background: #c28dff;
-}
-
-.tag3 {
-  background: #ff7676;
-}
-
-.tag1,
-.tag2 {
-  border: 2px solid #000;
-  border-radius: 12px;
-  padding: 5px 12px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  box-shadow: 2px 2px 0 #000;
-  width: 8vw;
-  text-align: center;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.tag1:hover,
-.tag2:hover {
-  transform: scale(1.05);
-  cursor: pointer;
 }
 
 .modal-buttons {

@@ -13,6 +13,7 @@ const WorkExperience = () => {
         "Designed a New Relic dashboard to monitor file services, displaying key metrics for on-call support like throughput, latency, and error rates, aligned with SLOs to track error budgets for proactive alerting.",
         "Developing a scalable API for documents functionality, replacing 9 integration points using C# and .NET.",
       ],
+      image: "xero.svg",
     },
     {
       title: "Infrastructure & Cloud Operations Intern",
@@ -22,6 +23,7 @@ const WorkExperience = () => {
         "Leveraged Jira and Confluence to streamline change request workflows and create setup, maintenance, and troubleshooting guides for tools such as Google Cloud Platform, Pure Storage, and other cybersecurity software.",
         "Streamlined CMDB with tools such as Device42, vSphere, and SolarWinds to improve asset tracking.",
       ],
+      image: "questrade.png",
     },
     {
       title: "Information Technology Intern",
@@ -31,6 +33,7 @@ const WorkExperience = () => {
         "Configured Checkpoint security for 400+ Lenovo laptops and used Microsoft Excel to keep record of progress.",
         "Successfully prepared 800+ laptops for deployment to office employees",
       ],
+      image: "cast.jpg",
     },
     {
       title: "Information Technology Field Staff",
@@ -40,6 +43,7 @@ const WorkExperience = () => {
         "Supervised the return of 15,000 TDSB-loaned devices and reported team progress to IT supervisors and staff.",
         "Recorded software issues and/or electronic damages for all chrome books using Google Suite tools.",
       ],
+      image: "tdsb.png",
     },
   ];
 
@@ -53,7 +57,7 @@ const WorkExperience = () => {
             <div className="timeline-content">
               <div className="timeline-content-top">
                 <div className="timeline-content-left">
-                  <div className="timeline-image"></div>
+                  <img src={job.image} className="timeline-image" />
                   <h3 className="job-title">{job.title}</h3>
                   <p className="company">{job.company}</p>
                 </div>
