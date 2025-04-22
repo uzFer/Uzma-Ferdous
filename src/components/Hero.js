@@ -12,7 +12,7 @@ const facts = [
     type: "textWithLink",
     preText: "Check out my",
     linkText: "Instagram page",
-    linkHref: "https://www.instagram.com/yourusername/",
+    linkHref: "https://www.instagram.com/uzmas.art.shop",
     postText: "where I post my paintings and commissions ;)",
   },
   {
