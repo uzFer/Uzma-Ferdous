@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
-import { FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaEnvelope, FaLinkedin, FaGithub, FaPaperPlane } from "react-icons/fa";
 import "./Contact.css";
 
 const Contact = () => {
@@ -104,6 +104,7 @@ const Contact = () => {
           </div>
           <button type="submit" className="submit-button">
             Send Message
+            <FaPaperPlane />
           </button>
         </form>
       </div>
