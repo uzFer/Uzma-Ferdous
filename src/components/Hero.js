@@ -75,7 +75,7 @@ const Hero = () => {
   return (
     <section className="hero">
       <div className="hero-title-row">
-        <img src="/name.png" alt="Uzma Ferdous" className="hero-title-image" />
+        <img src="./name.png" alt="Uzma Ferdous" className="hero-title-image" />
       </div>
       <div className="hero-content-row">
         <div className="hero-left">
@@ -133,7 +133,7 @@ const Hero = () => {
         </div>
         <div className="hero-right">
           <div className="avatar-wrapper">
-            <img src="/avatar.png" alt="Trainer" className="hero-image" />
+            <img src="./avatar.png" alt="Trainer" className="hero-image" />
             <div className="avatar-shadow"></div>
           </div>
         </div>
