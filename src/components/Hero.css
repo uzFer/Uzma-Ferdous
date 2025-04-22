@@ -1,10 +1,11 @@
 .hero {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   padding: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .hero-title-row {
@@ -70,30 +71,19 @@
 
 .tag1 {
   background: #ffc107;
-  border: 2px solid #000;
-  border-radius: 12px;
-  padding: 5px 12px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  box-shadow: 2px 2px 0 #000;
-  text-align: center;
-  width: 12vw;
 }
 
 .tag2 {
   background: #c28dff;
-  border: 2px solid #000;
-  border-radius: 12px;
-  padding: 5px 12px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  box-shadow: 2px 2px 0 #000;
-  text-align: center;
-  width: 14vw;
 }
 
 .tag3 {
   background: #ff7676;
+}
+
+.tag1,
+.tag2,
+.tag3 {
   border: 2px solid #000;
   border-radius: 12px;
   padding: 5px 12px;
@@ -101,7 +91,9 @@
   font-weight: bold;
   box-shadow: 2px 2px 0 #000;
   text-align: center;
-  width: 12vw;
+  width: auto;
+  min-width: fit-content;
+  max-width: 100%;
 }
 
 .trainer-info {
@@ -125,12 +117,11 @@
   border-radius: 10px;
   padding: 20px;
   font-size: 1rem;
-  font-weight: bold;
   text-align: center;
   cursor: pointer;
   transition: 0.3s;
   overflow: hidden;
-  height: 100px;
+  height: 12vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -164,21 +155,21 @@
 }
 
 .download-resume-button {
-  display: flex;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 20px;
-  padding: 20px;
+  padding: 8px 16px;
   background: #7ad7ff;
   border: 2px solid #000;
   border-radius: 12px;
-  padding: 5px 12px;
   font-size: 0.9rem;
   font-weight: bold;
   box-shadow: 2px 2px 0 #000;
   text-align: center;
-  align-items: center;
-  justify-content: space-between;
-  width: 12vw;
+  gap: 8px;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
 .download-resume-button:hover {
@@ -190,6 +181,7 @@
   display: flex;
   justify-content: center;
   align-items: end;
+  z-index: 3;
 }
 
 .hero-image {
@@ -200,6 +192,7 @@
 
 .hero-image:hover {
   cursor: pointer;
+  animation: quickJump 0.5s infinite ease-in-out;
 }
 
 .avatar-shadow {
@@ -212,6 +205,83 @@
   filter: blur(2px);
   z-index: -1;
   animation: shadowScale 2s infinite ease-in-out;
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .hero {
+    padding: 20px;
+    min-height: auto;
+  }
+
+  .hero-title-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .hero-title-image {
+    width: 70%;
+  }
+
+  .hero-heading {
+    margin-bottom: 10px;
+  }
+
+  .hero-content-row {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+  }
+
+  .hero-left,
+  .hero-right {
+    width: 100%;
+    text-align: center;
+  }
+
+  .download-resume-button {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+
+  .avatar-wrapper {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-left,
+  .hero-right {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-title-image {
+    width: 100%;
+  }
+
+  .hero-box {
+    height: 20vh;
+  }
+
+  .hero-tags {
+    justify-content: center;
+  }
+
+  .download-resume-button {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+
+  .avatar-wrapper {
+    margin-top: 2rem;
+  }
 }
 
 @keyframes arrowMovement {
@@ -230,6 +300,16 @@
   }
   50% {
     transform: translateY(-5px);
+  }
+}
+
+@keyframes quickJump {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
 

@@ -59,6 +59,7 @@
 .timeline-content-left {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .timeline-image {
@@ -76,6 +77,8 @@
   color: #444;
   margin-left: 10px;
   margin-right: 20px;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
 .company {
@@ -99,6 +102,10 @@
 }
 
 @media (max-width: 768px) {
+  .work-experience {
+    padding: 40px 20px;
+  }
+
   .timeline {
     padding: 20px;
   }
@@ -109,36 +116,52 @@
 
   .timeline-content {
     padding: 8px 12px;
-    margin-left: 15px;
+    margin-left: 5%;
+    width: 100%;
   }
 
   .timeline-content-top {
     flex-direction: column;
     align-items: flex-start;
+    padding: 5px;
   }
 
   .timeline-content-left {
-    flex-direction: row;
+    display: flex;
     align-items: center;
     margin-bottom: 8px;
-  }
-
-  .job-title {
-    margin-right: 5px;
-    margin-bottom: 0;
+    gap: 10px;
   }
 
   .timeline-image {
-    width: 30px;
-    height: 30px;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
     margin-right: 10px;
+    flex-shrink: 0;
+  }
+
+  .job-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #444;
+    white-space: normal;
+    word-wrap: break-word;
+    display: inline-block;
+    margin-left: 0;
   }
 
   .timeline-dot {
     top: 1.7rem;
-    left: -8px;
+    left: -27px;
     width: 12px;
     height: 12px;
+  }
+
+  .company,
+  .duration {
+    margin-top: 8px;
+    font-size: 0.9rem;
   }
 
   .description {

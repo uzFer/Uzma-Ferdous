@@ -61,3 +61,78 @@
 .pokeball-item:hover .pokeball-hover-image {
   transform: scale(1.05);
 }
+
+@media (max-width: 768px) {
+  .pokeball-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pokeball-item {
+    margin: 0.5rem 0;
+  }
+
+  .projects-label-image {
+    width: 14rem;
+  }
+
+  .experience-label-image {
+    width: 16rem;
+  }
+
+  .contact-me-label-image {
+    width: 18rem;
+  }
+
+  .pokeball-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+    justify-items: center;
+  }
+
+  .pokeball-item:nth-child(1) {
+    grid-row: 1;
+  }
+  .pokeball-item:nth-child(2) {
+    grid-row: 2;
+  }
+  .pokeball-item:nth-child(3) {
+    grid-row: 3;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .pokeball-container {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .pokeball-item {
+    margin: 0.5rem 0;
+  }
+
+  .hero-heading {
+    margin-bottom: 1rem;
+  }
+
+  .projects-label-image {
+    width: 13rem;
+  }
+
+  .experience-label-image {
+    width: 14rem;
+  }
+
+  .contact-me-label-image {
+    width: 15rem;
+  }
+
+  .pokeball-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}

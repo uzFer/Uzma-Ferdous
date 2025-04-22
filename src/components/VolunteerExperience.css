@@ -17,6 +17,7 @@
 }
 
 .volunteer-card-wrapper {
+  flex: 0 0 auto;
   transition: filter 0.5s ease, transform 0.5s ease;
 }
 
@@ -31,6 +32,7 @@
   display: flex;
   transition: transform 0.5s ease;
   padding: 0 50px;
+  width: 100%;
 }
 
 .volunteer-card {
@@ -143,14 +145,14 @@
 
 .volunteer-modal-body {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
 .volunteer-modal-image {
   width: 45%;
-  height: 20rem;
-  width: 20rem;
+  height: 15rem;
+  width: 15rem;
   background-color: #ffffff;
   border-radius: 50%;
 }
@@ -192,4 +194,64 @@ a {
 
 .volunteer-modal-close-button:hover {
   color: #666;
+}
+
+.volunteer-link {
+  color: #0077ff;
+  text-decoration: underline;
+}
+
+.volunteer-link:hover {
+  color: #0055cc;
+}
+
+@media (max-width: 768px) {
+  .volunteer-cards-container {
+    padding: 0 20px;
+  }
+
+  .volunteer-card {
+    width: 12rem;
+    height: 18rem;
+    margin: 10px;
+  }
+
+  .volunteer-carousel-prev,
+  .volunteer-carousel-next {
+    font-size: 20px;
+  }
+
+  .volunteer-card-content h3 {
+    font-size: 0.9rem;
+  }
+
+  .volunteer-card-content p {
+    font-size: 0.8rem;
+  }
+
+  .volunteer-card-image {
+    height: 8rem;
+  }
+
+  .volunteer-tag1,
+  .volunteer-tag2 {
+    width: auto;
+    font-size: 0.8rem;
+  }
+
+  .volunteer-modal-container {
+    width: 80%;
+    max-width: 40rem;
+  }
+
+  .volunteer-modal-image {
+    width: 10rem;
+    height: 10rem;
+    margin-bottom: 20px;
+  }
+
+  .volunteer-modal-text {
+    width: 100%;
+    text-align: center;
+  }
 }

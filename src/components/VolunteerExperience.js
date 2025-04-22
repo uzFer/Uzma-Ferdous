@@ -1,14 +1,19 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./VolunteerExperience.css";
 import { FaCaretSquareLeft, FaCaretSquareRight, FaTimes } from "react-icons/fa";
 
 const VolunteerExperience = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedExperience, setSelectedExperience] = useState(null);
+  const [cardsVisible, setCardsVisible] = useState(4);
+  const containerRef = useRef(null);
   const clickSound = useRef(null);
+  const [dragging, setDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
 
   const cards = [
     {
+      type: "text",
       role: "Brand Growth & Marketing Lead",
       club: "You're Next Career Network",
       date: "March 2025 - present",
@@ -18,6 +23,7 @@ const VolunteerExperience = () => {
       altText: "YNCN Logo",
     },
     {
+      type: "text",
       role: "Student Ambassador",
       club: "Department of Electrical & Computer Engineering",
       date: "September 2021 - present",
@@ -27,6 +33,7 @@ const VolunteerExperience = () => {
       altText: "ECE Logo",
     },
     {
+      type: "text",
       role: "Brand Growth & Marketing Associate",
       club: "You're Next Career Network",
       date: "April 2024 - March 2025",
@@ -36,6 +43,7 @@ const VolunteerExperience = () => {
       altText: "YNCN Logo",
     },
     {
+      type: "text",
       role: "Computer Vision Developer",
       club: "UofT Robotics Association",
       date: "August 2023 - March 2024",
@@ -45,6 +53,7 @@ const VolunteerExperience = () => {
       altText: "UTRA Logo",
     },
     {
+      type: "text",
       role: "Professional Development Marketing Director",
       club: "Women in Science & Engineering",
       date: "August 2023 - May 2024",
@@ -54,15 +63,20 @@ const VolunteerExperience = () => {
       altText: "WISE Logo",
     },
     {
+      type: "textWithLink",
       role: "Software Developer",
       club: "UofT Engineering Society",
       date: "January - September 2023",
-      description:
-        "I helped work on the UofT Engineering Orientation (Frosh) website for 1000+ incoming students! I also refined the infamous course database website (www.courses.skule.ca) using React.js and Redux.",
+      preText:
+        "I helped work on the UofT Engineering Orientation (Frosh) website for 1000+ incoming students! I also refined the infamous",
+      linkText: "course database website",
+      linkHref: "https://courses.skule.ca/",
+      postText: "using React.js and Redux.",
       image: "engsoc.png",
       altText: "EngSoc Logo",
     },
     {
+      type: "text",
       role: "Programming Director",
       club: "UofT Engineering Kompetition",
       date: "August - November 2023",
@@ -72,15 +86,17 @@ const VolunteerExperience = () => {
       altText: "UTEK Logo",
     },
     {
+      type: "text",
       role: "Content Lead",
       club: "UofT Cybersecurity Association",
       date: "June 2022 - June 2023",
       description:
-        "As the Content Lead for UofT CSSA, I led educational workshops about cybersecurity and best practices.",
+        "As the Content Lead for UofT CSSA, I led educational workshops about cybersecurity and best practices. I also had the opportunity to participate in the club's Microsoft Learn program, gaining certifications in Azure and Security Fundamentals.",
       image: "cssa.png",
       altText: "CSSA Logo",
     },
     {
+      type: "text",
       role: "Handbook Executive",
       club: "UofT Engineering Orientation Committee",
       date: "May - August 2022",
@@ -91,15 +107,53 @@ const VolunteerExperience = () => {
     },
   ];
 
-  const totalCards = cards.length;
-  const cardsVisible = 4;
+  useEffect(() => {
+    const updateVisibleCards = () => {
+      if (window.innerWidth <= 768) {
+        setCardsVisible(1);
+      } else if (window.innerWidth <= 1024) {
+        setCardsVisible(2);
+      } else {
+        setCardsVisible(4);
+      }
+    };
 
+    updateVisibleCards();
+    window.addEventListener("resize", updateVisibleCards);
+    return () => window.removeEventListener("resize", updateVisibleCards);
+  }, []);
+
+  const totalCards = cards.length;
   const maxIndex = totalCards - cardsVisible;
 
-  const goToPreviousSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? maxIndex : prevIndex - 1
-    );
+  const getTranslateValue = () => {
+    if (!containerRef.current) return 0;
+    const containerWidth = containerRef.current.offsetWidth;
+    const cardWidth = containerWidth / cardsVisible;
+    return currentIndex * cardWidth;
+  };
+
+  const handleMouseDown = (e) => {
+    setDragging(true);
+    setDragStartX(e.clientX);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!dragging) return;
+
+    const deltaX = e.clientX - dragStartX;
+    if (Math.abs(deltaX) > 30) {
+      const newIndex = Math.max(
+        0,
+        Math.min(maxIndex, currentIndex - Math.sign(deltaX))
+      );
+      setCurrentIndex(newIndex);
+      setDragStartX(e.clientX);
+    }
+  };
+
+  const handleMouseUp = () => {
+    setDragging(false);
   };
 
   const goToNextSlide = () => {
@@ -108,21 +162,31 @@ const VolunteerExperience = () => {
     );
   };
 
+  const goToPreviousSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? maxIndex : prevIndex - 1
+    );
+  };
+
   return (
     <section className="volunteer-experience">
       <h2>Volunteer Experience</h2>
       <div className="volunteer-experience-carousel">
-        <button
-          className="volunteer-carousel-prev"
-          onClick={goToPreviousSlide}
-          disabled={currentIndex === 0}
-        >
+        <button className="volunteer-carousel-prev" onClick={goToPreviousSlide}>
           <FaCaretSquareLeft />
         </button>
 
         <div
+          ref={containerRef}
           className="volunteer-cards-container"
-          style={{ transform: `translateX(-${currentIndex * 10}%)` }}
+          style={{
+            transform: `translateX(-${getTranslateValue()}px)`,
+            transition: "transform 0.5s ease-in-out",
+          }}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
         >
           {cards.map((card, index) => (
             <div
@@ -155,11 +219,7 @@ const VolunteerExperience = () => {
           ))}
         </div>
 
-        <button
-          className="volunteer-carousel-next"
-          onClick={goToNextSlide}
-          disabled={currentIndex === maxIndex}
-        >
+        <button className="volunteer-carousel-next" onClick={goToNextSlide}>
           <FaCaretSquareRight />
         </button>
       </div>
@@ -179,6 +239,7 @@ const VolunteerExperience = () => {
             >
               <FaTimes />
             </button>
+
             <div className="volunteer-modal-content">
               <div className="volunteer-modal-header">
                 <h2>{selectedExperience.role}</h2>
@@ -192,7 +253,23 @@ const VolunteerExperience = () => {
                   className="volunteer-modal-image"
                 />
                 <div className="volunteer-modal-text">
-                  <p>{selectedExperience.description}</p>
+                  {selectedExperience.type === "text" && (
+                    <p>{selectedExperience.description}</p>
+                  )}
+                  {selectedExperience.type === "textWithLink" && (
+                    <span>
+                      {selectedExperience.preText}&nbsp;
+                      <a
+                        href={selectedExperience.linkHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="volunteer-link"
+                      >
+                        {selectedExperience.linkText}
+                      </a>
+                      &nbsp;{selectedExperience.postText}
+                    </span>
+                  )}
                 </div>
               </div>
             </div>

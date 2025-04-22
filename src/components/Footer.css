@@ -11,4 +11,16 @@
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
   border-top: 2px solid #000;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+  }
 }

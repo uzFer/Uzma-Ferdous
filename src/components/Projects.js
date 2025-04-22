@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./Projects.css";
 import {
   FaCaretSquareLeft,
@@ -12,6 +12,10 @@ const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedProject, setSelectedProject] = useState(null);
   const clickSound = useRef(null);
+  const containerRef = useRef(null);
+  const [cardsVisible, setCardsVisible] = useState(4);
+  const [dragging, setDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
 
   const cards = [
     {
@@ -53,7 +57,7 @@ const Projects = () => {
       title: "Scavenger Hunt GIS",
       date: "January - April 2023",
       description:
-        "In a team of 3, we created a Geographic Information System (GIS) in C++ to extract information from the OpenStreetMap API and store street intersections, points of interest, natural features, and transit data from over 8 billion graph nodes. We optimized autocomplete searching and zoom rendering using Tries and integrated it with other STL data structures. We ended up placing 4th out of 90 teams on course leaderboard for our 'Travelling Courier Problem' algorithm involving Multi-target Dijkstra, simulated annealing, and two-opt operations.",
+        "In a team of 3, we created a Geographic Information System in C++ to extract information from the OpenStreetMap API. We optimized autocomplete searching using Tries and integrated it with other STL data structures such as hashmaps and sets. We secured 4th out of 90 teams for our 'Travelling Courier Problem' algorithm!",
       image: "./mapper.png",
       altText: "ECE297 GIS Image",
     },
@@ -61,7 +65,7 @@ const Projects = () => {
       title: "YOLOv8 Object Segmentation",
       date: "September 2023 - December 2023",
       description:
-        "This project involved training and evaluating a YOLOv8 deep learning model for object segmentation of common road obstacles with a final F1 score of 61.5% and mAP 50 of 58.4%, outperforming the baseline Canny Edge Detector by 10% (which I was responsible for developing). We processed Berkeley Deep Drive 10K dataset to create training, validation, and testing datasets by converting instance segmentation labels into YOLOv8 format and applying augmentation techniques to improve data diversity.",
+        "A deep learning model for object segmentation of common road obstacles. We also processed the Berkeley Deep Drive 10K dataset by converting instance segmentation labels into YOLOv8 format and applying data augmentation techniques. Final F1 score = 61.5%, mAP 50 = 58.4%",
       image: "./yolo.png",
       githubLink: "https://github.com/uzFer/APS360-Project",
       altText: "YOLOv8 Model Image",
@@ -70,7 +74,7 @@ const Projects = () => {
       title: "Tidey",
       date: "November 2022 - January 2023",
       description:
-        "Used React and Node.js to develop an organization and productivity website for university students to add, edit, or delete courses, calculate and save grades, and store multiple course-related files. Integrated Google Firebase into website using Firebase Authentication for user authentication, Firestore Database to save changes to course information, and Firebase Storage to store and retrieve user files.",
+        "An organization and productivity website allowing student users to add, edit, or delete courses, calculate and save grades, and store multiple course-related files. We integrated Google Firebase for user authentication, saving changes to course information, and storing/retrieving user files.",
       image: "./tidey.png",
       githubLink: "https://github.com/uzFer/tidey",
       websiteLink: "https://uzfer.github.io/tidey/",
@@ -78,14 +82,59 @@ const Projects = () => {
     },
   ];
 
+  useEffect(() => {
+    const updateVisibleCards = () => {
+      if (window.innerWidth <= 768) {
+        setCardsVisible(1);
+      } else if (window.innerWidth <= 1024) {
+        setCardsVisible(2);
+      } else {
+        setCardsVisible(4);
+      }
+    };
+
+    updateVisibleCards();
+    window.addEventListener("resize", updateVisibleCards);
+    return () => window.removeEventListener("resize", updateVisibleCards);
+  }, []);
+
   const totalCards = cards.length;
-  const cardsVisible = 4;
   const maxIndex = totalCards - cardsVisible;
 
-  const goToPreviousSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? maxIndex : prevIndex - 1
-    );
+  const getTranslateValue = () => {
+    if (!containerRef.current) return 0;
+    const cardWidth = containerRef.current.scrollWidth / totalCards;
+    const containerWidth = containerRef.current.offsetWidth;
+
+    if (cardsVisible === 1) {
+      const centerOffset = (containerWidth - cardWidth) / 2;
+      return currentIndex * cardWidth - centerOffset;
+    } else {
+      return currentIndex * (cardWidth + 30);
+    }
+  };
+
+  const handleMouseDown = (e) => {
+    setDragging(true);
+    setDragStartX(e.clientX);
+  };
+
+  const handleMouseMove = (e) => {
+    if (!dragging) return;
+
+    const deltaX = e.clientX - dragStartX;
+    if (Math.abs(deltaX) > 30) {
+      const newIndex = Math.max(
+        0,
+        Math.min(maxIndex, currentIndex - Math.sign(deltaX))
+      );
+      setCurrentIndex(newIndex);
+      setDragStartX(e.clientX);
+    }
+  };
+
+  const handleMouseUp = () => {
+    setDragging(false);
   };
 
   const goToNextSlide = () => {
@@ -94,20 +143,31 @@ const Projects = () => {
     );
   };
 
+  const goToPreviousSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? maxIndex : prevIndex - 1
+    );
+  };
+
   return (
     <section className="projects">
       <h2>Personal Projects</h2>
       <div className="project-carousel">
-        <button
-          className="project-carousel-prev"
-          onClick={goToPreviousSlide}
-          disabled={currentIndex === 0}
-        >
+        <button className="project-carousel-prev" onClick={goToPreviousSlide}>
           <FaCaretSquareLeft />
         </button>
+
         <div
+          ref={containerRef}
           className="project-cards-container"
-          style={{ transform: `translateX(-${currentIndex * 10}%)` }}
+          style={{
+            transform: `translateX(-${getTranslateValue()}px)`,
+            transition: "transform 0.5s ease-in-out",
+          }}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
         >
           {cards.map((card, index) => (
             <div
@@ -139,11 +199,8 @@ const Projects = () => {
             </div>
           ))}
         </div>
-        <button
-          className="project-carousel-next"
-          onClick={goToNextSlide}
-          disabled={currentIndex === maxIndex}
-        >
+
+        <button className="project-carousel-next" onClick={goToNextSlide}>
           <FaCaretSquareRight />
         </button>
       </div>
@@ -204,6 +261,7 @@ const Projects = () => {
           </div>
         </div>
       )}
+
       <audio ref={clickSound} src="/click.mp3" preload="auto" />
     </section>
   );
