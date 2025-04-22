@@ -124,7 +124,7 @@ const Hero = () => {
             )}
           </div>
           <a
-            href="/Uzma Ferdous - Resume.pdf"
+            href="./Uzma Ferdous - Resume.pdf"
             download
             className="download-resume-button"
           >
