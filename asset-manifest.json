@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/uzma-ferdous/static/css/main.f21dae97.css",
-    "main.js": "/uzma-ferdous/static/js/main.a8a33b3c.js",
-    "index.html": "/uzma-ferdous/index.html",
-    "main.f21dae97.css.map": "/uzma-ferdous/static/css/main.f21dae97.css.map",
-    "main.a8a33b3c.js.map": "/uzma-ferdous/static/js/main.a8a33b3c.js.map"
+    "main.css": "/Uzma-Ferdous/static/css/main.f21dae97.css",
+    "main.js": "/Uzma-Ferdous/static/js/main.a8a33b3c.js",
+    "index.html": "/Uzma-Ferdous/index.html",
+    "main.f21dae97.css.map": "/Uzma-Ferdous/static/css/main.f21dae97.css.map",
+    "main.a8a33b3c.js.map": "/Uzma-Ferdous/static/js/main.a8a33b3c.js.map"
   },
   "entrypoints": [
     "static/css/main.f21dae97.css",
