@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Uzma-Ferdous/static/css/main.a35c9df4.css",
-    "main.js": "/Uzma-Ferdous/static/js/main.aff53046.js",
+    "main.js": "/Uzma-Ferdous/static/js/main.e752fb39.js",
     "index.html": "/Uzma-Ferdous/index.html",
     "main.a35c9df4.css.map": "/Uzma-Ferdous/static/css/main.a35c9df4.css.map",
-    "main.aff53046.js.map": "/Uzma-Ferdous/static/js/main.aff53046.js.map"
+    "main.e752fb39.js.map": "/Uzma-Ferdous/static/js/main.e752fb39.js.map"
   },
   "entrypoints": [
     "static/css/main.a35c9df4.css",
-    "static/js/main.aff53046.js"
+    "static/js/main.e752fb39.js"
   ]
 }
