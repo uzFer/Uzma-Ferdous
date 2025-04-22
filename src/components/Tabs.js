@@ -78,7 +78,7 @@ const PokeballTabs = ({ activeTab, setActiveTab }) => {
           </div>
         );
       })}
-      <audio ref={pokeballSound} src="/pokeball.mp3" preload="auto" />
+      <audio ref={pokeballSound} src="./pokeball.mp3" preload="auto" />
     </div>
   );
 };

@@ -143,7 +143,7 @@ const Hero = () => {
         {isMusicPlaying ? <FaVolumeUp /> : <FaVolumeMute />}
       </div>
       <audio ref={backgroundMusic} src="/music.mp3" loop preload="auto" />
-      <audio ref={clickSound} src="/click.mp3" preload="auto" />
+      <audio ref={clickSound} src="./click.mp3" preload="auto" />
     </section>
   );
 };
